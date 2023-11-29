@@ -25,10 +25,32 @@ public class Exceptional {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+         Scanner sc = new Scanner(System.in);
+//         int input = sc.nextInt();
+         boolean validInput = false;
+         Circle circle1;
+         int input = 0;
+         while (!validInput) {
+             try {
+                 System.out.println("What is the radius of the circle?");
+                input = sc.nextInt();
+                circle1  = new Circle(input);
+                validInput = true;
+             } catch (InvalidLengthException e) {
+                 System.out.println(e);
+             } catch (NegativeNumberException e) {
+                 System.out.println(e);
+             }
+         }
+        
+        
+        
+        Rectangle rect1 = new Rectangle(input, 6);
+        
+       
         // input = Java is a runtime/uncheckedc expection
         // Java does not tell us about it in advance
-        int input = sc.nextInt();
+        
         System.out.println(input);
         // This is a checked exception
         // We cannot compile the code, even if it would not throw the exception
@@ -63,6 +85,8 @@ public class Exceptional {
         } finally {
             System.out.println("Finally!");
         }
+        
+        
     }
     
 }
